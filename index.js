@@ -7,7 +7,7 @@ const cli = meow(
   `
     Usage
       $ foo <input>
- 
+
     Options
       --width, -w  Browser width
       --height, -h  Browser height
@@ -17,7 +17,7 @@ const cli = meow(
       --delay, Delay in miliseconds before taking a screenshot
       --emulate, Emulates a device viewport and useragent
       --list-emulators, Lists all supported emulators
- 
+
     Examples
       $ foo https://example.com
       $ foo https://example.com --path /Users/foobar --filename MyScreenshot --delay 500
