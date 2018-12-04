@@ -1,0 +1,33 @@
+{
+  "name": "screeny",
+  "version": "1.0.1",
+  "description": "Take screenshots directly from your terminal",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "screeny": "./index.js"
+  },
+  "dependencies": {
+    "chalk": "~2.4.1",
+    "commander": "~2.19.0",
+    "meow": "~5.0.0",
+    "puppeteer": "~1.10.0"
+  },
+  "keywords": [
+    "screenshots",
+    "emulations",
+    "mobile"
+  ],
+  "author": "Sebastian Ekström <seb.ekstrom@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vladocar/screenshoteer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vladocar/screenshoteer/issues"
+  },
+  "homepage": "https://github.com/vladocar/screenshoteer#readme"
+}
