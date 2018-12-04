@@ -4,7 +4,7 @@
   "description": "Take screenshots directly from your terminal",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "node_modules/.bin/eslint index.js src/**/*.js --max-warnings 0"
   },
   "bin": {
     "screeny": "./index.js"
@@ -24,10 +24,16 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vladocar/screenshoteer.git"
+    "url": "git+https://github.com/sebastianekstrom/screeny.git"
   },
   "bugs": {
-    "url": "https://github.com/vladocar/screenshoteer/issues"
+    "url": "https://github.com/sebastianekstrom/screeny/issues"
   },
-  "homepage": "https://github.com/vladocar/screenshoteer#readme"
+  "homepage": "https://github.com/sebastianekstrom/screeny#readme",
+  "devDependencies": {
+    "eslint": "^5.9.0",
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-plugin-prettier": "^3.0.0",
+    "prettier": "^1.15.3"
+  }
 }

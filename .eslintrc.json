@@ -1,0 +1,17 @@
+{
+  "extends": ["eslint:recommended", "prettier"],
+  "plugins": ["prettier"],
+  "parserOptions": {
+    "ecmaVersion": 8
+  },
+  "env": {
+    "amd": true,
+    "node": true
+  },
+  "rules": {
+    "prettier/prettier": ["error"],
+    "no-console": 0,
+    "use-isnan": 0,
+    "no-restricted-properties": 0
+  }
+}
