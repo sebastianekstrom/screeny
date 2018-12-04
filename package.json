@@ -1,6 +1,6 @@
 {
   "name": "screeny",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "Take screenshots directly from your terminal",
   "main": "index.js",
   "scripts": {
