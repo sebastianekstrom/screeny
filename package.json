@@ -1,6 +1,6 @@
 {
   "name": "screeny",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Take screenshots directly from your terminal",
   "main": "index.js",
   "scripts": {
@@ -20,6 +20,9 @@
     "emulations",
     "mobile"
   ],
+  "config": {
+    "puppeteer_skip_chromium_download": true
+  },
   "author": "Sebastian Ekström <seb.ekstrom@gmail.com>",
   "license": "MIT",
   "repository": {
