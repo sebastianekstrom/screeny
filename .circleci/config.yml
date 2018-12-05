@@ -50,7 +50,7 @@ workflows:
           requires:
             - install
 
-      - publish:
+      - deploy:
           requires:
             - install
             - lint
