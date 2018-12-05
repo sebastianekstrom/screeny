@@ -2,6 +2,8 @@
 
 Take screenshots directly from your terminal! Created with [Puppeteer](https://github.com/GoogleChrome/puppeteer).
 
+![CLI](https://user-images.githubusercontent.com/1921046/49509710-62b2ef00-f886-11e8-80c2-8c101a860241.gif)
+
 ## Installation
 
 Run the following command:
