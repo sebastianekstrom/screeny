@@ -1,0 +1,55 @@
+version: 2
+jobs:
+  install:
+    working_directory: ~/screeny
+    docker:
+      - image: circleci/node:8.9.0
+    steps:
+      - checkout
+      - restore_cache:
+          key: v1-dependency-cache-{{ checksum "package.json" }}
+      - run:
+          command: |
+            yarn
+      - save_cache:
+          key: v1-dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+
+  lint:
+    working_directory: ~/screeny
+    docker:
+      - image: circleci/node:8.9.0
+    parallelism: 1
+    steps:
+      - checkout
+      - restore_cache:
+          key: v1-dependency-cache-{{ checksum "package.json" }}
+      - run: yarn run lint
+
+  deploy:
+    steps:
+      - attach_workspace:
+          at: ~/screeny
+      - run:
+          name: Authenticate with registry
+          command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > ~/screeny/.npmrc
+      - run:
+          name: Publish package
+          command: npm publish
+
+workflows:
+  version: 2
+  jobs:
+    - install
+
+    - lint:
+        requires:
+          - install
+
+    - deploy:
+        requires:
+          - lint
+        filters:
+          branches:
+            only: master
