@@ -1,9 +1,13 @@
 version: 2
+
+defaults: &defaults
+  working_directory: ~/screeny
+  docker:
+    - image: circleci/node:11.3.0
+
 jobs:
   install:
-    working_directory: ~/screeny
-    docker:
-      - image: circleci/node:11.3.0
+    <<: *defaults
     steps:
       - checkout
       - restore_cache:
@@ -15,11 +19,12 @@ jobs:
           key: v1-dependency-cache-{{ checksum "package.json" }}
           paths:
             - node_modules
+      - persist_to_workspace:
+          root: ~/screeny
+          paths: .
 
   lint:
-    working_directory: ~/screeny
-    docker:
-      - image: circleci/node:11.3.0
+    <<: *defaults
     parallelism: 1
     steps:
       - checkout
@@ -28,10 +33,10 @@ jobs:
       - run: yarn run lint
 
   deploy:
-    working_directory: ~/screeny
-    docker:
-      - image: circleci/node:11.3.0
+    <<: *defaults
     steps:
+      - attach_workspace:
+          at: ~/screeny
       - run:
           name: Authenticate with registry
           command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > ~/screeny/.npmrc
