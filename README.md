@@ -7,7 +7,7 @@ Take screenshots directly from your terminal! Created with [Puppeteer](https://g
 Run the following command:
 
 ```
-npm i screeny -g
+yarn global add screeny
 ```
 
 ## Usage
@@ -15,13 +15,13 @@ npm i screeny -g
 ### Taking a screenshot
 
 ```
-screeny https://example.com
+screeny example.com
 ```
 
 ### Options
 
 ```
-screeny https://example.com --path ~/Desktop/images --filename screenshot --delay 500
+screeny example.com --path ~/Desktop/images --filename screenshot --delay 500
 ```
 
 ### Available options

@@ -2,11 +2,12 @@
 
 const meow = require("meow");
 const run = require("./src/run");
+const pJson = require("./package.json");
 
 const cli = meow(
   `
     Usage
-      $ foo <input>
+      $ screeny <url> <options>
 
     Options
       --width, -w  Browser width
@@ -19,12 +20,12 @@ const cli = meow(
       --list-emulators, Lists all supported emulators
 
     Examples
-      $ foo https://example.com
-      $ foo https://example.com --path /Users/foobar --filename MyScreenshot --delay 500
-      $ foo https://example.com --emulate "iPhone 4"
+      $ screeny example.com
+      $ screeny example.com --path /Users/foobar --filename MyScreenshot --delay 500
+      $ screeny example.com --emulate "iPhone 4"
 `,
   {
-    version: "0.1.0",
+    version: `${pJson.version}`,
     flags: {
       width: {
         type: "string",
