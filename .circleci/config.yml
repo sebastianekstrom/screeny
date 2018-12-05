@@ -28,6 +28,8 @@ jobs:
       - run: yarn run lint
 
   deploy:
+    docker:
+      - image: circleci/node:8.9.0
     steps:
       - attach_workspace:
           at: ~/screeny
