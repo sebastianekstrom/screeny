@@ -1,6 +1,6 @@
 {
   "name": "screeny",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Take screenshots directly from your terminal",
   "main": "index.js",
   "scripts": {
@@ -17,11 +17,8 @@
   "keywords": [
     "screenshots",
     "emulations",
-    "mobile"
+    "cli"
   ],
-  "config": {
-    "puppeteer_skip_chromium_download": true
-  },
   "author": "Sebastian Ekström <seb.ekstrom@gmail.com>",
   "license": "MIT",
   "repository": {
@@ -31,7 +28,7 @@
   "bugs": {
     "url": "https://github.com/sebastianekstrom/screeny/issues"
   },
-  "homepage": "https://github.com/sebastianekstrom/screeny#readme",
+  "homepage": "https://github.com/sebastianekstrom/screeny",
   "devDependencies": {
     "eslint": "~5.9.0",
     "eslint-config-prettier": "~3.3.0",

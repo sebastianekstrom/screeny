@@ -10,8 +10,6 @@
   },
   "rules": {
     "prettier/prettier": ["error"],
-    "no-console": 0,
-    "use-isnan": 0,
-    "no-restricted-properties": 0
+    "no-console": 0
   }
 }
