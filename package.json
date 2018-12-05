@@ -11,9 +11,8 @@
   },
   "dependencies": {
     "chalk": "~2.4.1",
-    "commander": "~2.19.0",
     "meow": "~5.0.0",
-    "puppeteer": "~1.10.0"
+    "puppeteer": "~1.11.0"
   },
   "keywords": [
     "screenshots",
@@ -34,9 +33,9 @@
   },
   "homepage": "https://github.com/sebastianekstrom/screeny#readme",
   "devDependencies": {
-    "eslint": "^5.9.0",
-    "eslint-config-prettier": "^3.3.0",
-    "eslint-plugin-prettier": "^3.0.0",
-    "prettier": "^1.15.3"
+    "eslint": "~5.9.0",
+    "eslint-config-prettier": "~3.3.0",
+    "eslint-plugin-prettier": "~3.0.0",
+    "prettier": "~1.15.3"
   }
 }
