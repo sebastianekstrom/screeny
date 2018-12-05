@@ -28,6 +28,7 @@ jobs:
       - run: yarn run lint
 
   deploy:
+    working_directory: ~/screeny
     docker:
       - image: circleci/node:11.3.0
     steps:
