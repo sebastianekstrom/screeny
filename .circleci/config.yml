@@ -50,8 +50,9 @@ workflows:
           requires:
             - install
 
-      - deploy:
+      - publish:
           requires:
+            - install
             - lint
           filters:
             branches:
