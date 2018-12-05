@@ -3,7 +3,7 @@ jobs:
   install:
     working_directory: ~/screeny
     docker:
-      - image: circleci/node:8.9.0
+      - image: circleci/node:11.3.0
     steps:
       - checkout
       - restore_cache:
@@ -19,7 +19,7 @@ jobs:
   lint:
     working_directory: ~/screeny
     docker:
-      - image: circleci/node:8.9.0
+      - image: circleci/node:11.3.0
     parallelism: 1
     steps:
       - checkout
@@ -28,6 +28,8 @@ jobs:
       - run: yarn run lint
 
   deploy:
+    docker:
+      - image: circleci/node:11.3.0
     steps:
       - attach_workspace:
           at: ~/screeny
@@ -40,16 +42,17 @@ jobs:
 
 workflows:
   version: 2
-  jobs:
-    - install
+  web-workflow:
+    jobs:
+      - install
 
-    - lint:
-        requires:
-          - install
+      - lint:
+          requires:
+            - install
 
-    - deploy:
-        requires:
-          - lint
-        filters:
-          branches:
-            only: master
+      - deploy:
+          requires:
+            - lint
+          filters:
+            branches:
+              only: master
