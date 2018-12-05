@@ -40,16 +40,17 @@ jobs:
 
 workflows:
   version: 2
-  jobs:
-    - install
+  web-workflow:
+    jobs:
+      - install
 
-    - lint:
-        requires:
-          - install
+      - lint:
+          requires:
+            - install
 
-    - deploy:
-        requires:
-          - lint
-        filters:
-          branches:
-            only: master
+      - deploy:
+          requires:
+            - lint
+          filters:
+            branches:
+              only: master
