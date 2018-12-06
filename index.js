@@ -10,8 +10,8 @@ const cli = meow(
       $ screeny <url> <options>
 
     Options
-      --width, -w  Browser width
-      --height, -h  Browser height
+      --width, -w  Browser width. If neither width or height are set, a full size screenshot will be taken
+      --height, -h  Browser height. If neither width or height are set, a full size screenshot will be taken
       --path, Path to where the screenshot will be saved
       --filename, Name of the saved file, defaults to page title
       --filetype, Format of the saved file, either 'png' or 'jpeg'. Defaults to 'png'

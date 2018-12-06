@@ -80,9 +80,7 @@ const takeScreenshot = (pageURL, flags) => {
     info(`📸 Taking screenshot`);
 
     const pageTitle = await page.title();
-    const fileName = flags.filename
-      ? `${flags.filename}.${flags.filetype}`
-      : `${pageTitle}.${flags.filetype}`;
+    const fileName = setFileName(pageTitle, flags);
 
     const path = flags.path ? `${flags.path}/${fileName}` : fileName;
 
@@ -100,10 +98,7 @@ const takeScreenshot = (pageURL, flags) => {
       fs.mkdirSync("./.tmp");
     }
 
-    fs.writeFileSync(
-      "./.tmp/last_saved_image.txt",
-      `${imagePath}/${fileName.replace(/\s/g, "\\ ")}`
-    );
+    fs.writeFileSync("./.tmp/last_saved_image.txt", `${imagePath}/${fileName}`);
 
     await browser.close();
 
@@ -113,6 +108,14 @@ const takeScreenshot = (pageURL, flags) => {
       success(`🖼  Run screeny --open to view the file`);
     }
   });
+};
+
+const setFileName = (pageTitle, flags) => {
+  const name = flags.filename
+    ? `${flags.filename}.${flags.filetype}`
+    : `${pageTitle}.${flags.filetype}`;
+
+  return name.replace(/\s/g, "_").replace(/[^A-Za-z._]/g, "");
 };
 
 const emulationDeviceIsValid = device => {
