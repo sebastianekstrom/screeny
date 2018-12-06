@@ -65,8 +65,10 @@ const takeScreenshot = (pageURL, flags) => {
     try {
       await page.goto(url);
     } catch (e) {
-      error(
-        "Uh oh...something went wrong when visiting the page, please try again!"
+      process.exit(
+        error(
+          "Uh oh...something went wrong when visiting the page, please try again!"
+        )
       );
     }
 
@@ -130,8 +132,10 @@ const openFile = () => {
     const path = fs.readFileSync("./.tmp/last_saved_image.txt", "utf8");
     cmd.run(`open ${path}`);
   } catch (e) {
-    error(
-      "Couldn't find the screenshot. Please make sure to take a screenshot before running this command."
+    process.exit(
+      error(
+        "Couldn't find the screenshot. Please make sure to take a screenshot before running this command."
+      )
     );
   }
 };
