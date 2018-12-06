@@ -37,6 +37,22 @@ screeny example.com --path ~/Desktop/images --filename screenshot --delay 500
 --delay, Delay in miliseconds before taking a screenshot
 --emulate, Emulates a device viewport and useragent
 --list-emulators, Lists all supported emulators
+--open, Open the screenshot
+```
+
+### View the screenshot
+
+To view the screenshot after it's taken, pass the `--open` flag:
+
+```
+screeny example.com --open
+```
+
+You can also run this command directly after taking a screenshot and `screeny` will open the last screenshot you've taken:
+
+```
+screeny example.com
+screeny --open
 ```
 
 ## License
