@@ -18,11 +18,13 @@ const cli = meow(
       --delay, Delay in miliseconds before taking a screenshot
       --emulate, Emulates a device viewport and useragent
       --list-emulators, Lists all supported emulators
+      --open, Open the screenshot
 
     Examples
       $ screeny example.com
       $ screeny example.com --path /Users/foobar --filename MyScreenshot --delay 500
       $ screeny example.com --emulate "iPhone 4"
+      $ screeny --open
 `,
   {
     version: `${pJson.version}`,
@@ -52,6 +54,9 @@ const cli = meow(
         type: "string"
       },
       listEmulators: {
+        type: "boolean"
+      },
+      open: {
         type: "boolean"
       }
     }

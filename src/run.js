@@ -1,9 +1,16 @@
+const fs = require("fs");
 const puppeteer = require("puppeteer");
 const devices = require("puppeteer/DeviceDescriptors");
+const cmd = require("node-cmd");
+
 const supportedEmulators = require("./emulators");
 const { info, success, error } = require("./logger");
 
 module.exports = (url, flags) => {
+  if (!url && flags.open) {
+    return openFile();
+  }
+
   if (flags.listEmulators) {
     process.exit(
       supportedEmulators.forEach(emulator => {
@@ -55,7 +62,13 @@ const takeScreenshot = (pageURL, flags) => {
 
     info(`🚚 Visiting ${url}`);
 
-    await page.goto(url);
+    try {
+      await page.goto(url);
+    } catch (e) {
+      error(
+        "Uh oh...something went wrong when visiting the page, please try again!"
+      );
+    }
 
     if (flags.delay) {
       info(`⏰ Waiting for ${flags.delay}ms`);
@@ -81,7 +94,22 @@ const takeScreenshot = (pageURL, flags) => {
 
     success(`🎉 Successfully saved ${fileName} to ${imagePath}`);
 
+    if (!fs.existsSync("./.tmp")) {
+      fs.mkdirSync("./.tmp");
+    }
+
+    fs.writeFileSync(
+      "./.tmp/last_saved_image.txt",
+      `${imagePath}/${fileName.replace(/\s/g, "\\ ")}`
+    );
+
     await browser.close();
+
+    if (flags.open) {
+      openFile();
+    } else {
+      success(`🖼  Run screeny --open to view the file`);
+    }
   });
 };
 
@@ -95,4 +123,15 @@ const createValidURL = url => {
   }
 
   return url;
+};
+
+const openFile = () => {
+  try {
+    const path = fs.readFileSync("./.tmp/last_saved_image.txt", "utf8");
+    cmd.run(`open ${path}`);
+  } catch (e) {
+    error(
+      "Couldn't find the screenshot. Please make sure to take a screenshot before running this command."
+    );
+  }
 };
