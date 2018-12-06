@@ -29,8 +29,8 @@ screeny example.com --path ~/Desktop/images --filename screenshot --delay 500
 ### Available options
 
 ```
---width, -w,  Browser width
---height, -h,  Browser height
+--width, -w,  Browser width. If neither width or height are set, a full size screenshot will be taken
+--height, -h,  Browser height. If neither width or height are set, a full size screenshot will be taken
 --path, Path to where the screenshot will be saved
 --filename, Name of the saved file, defaults to page title
 --filetype, Format of the saved file, either 'png' or 'jpeg'. Defaults to 'png'
