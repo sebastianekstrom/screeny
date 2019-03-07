@@ -2,38 +2,65 @@
   "name": "screeny",
   "version": "1.1.2",
   "description": "Take screenshots directly from your terminal",
-  "main": "index.js",
-  "scripts": {
-    "lint": "node_modules/.bin/eslint index.js src/**/*.js --max-warnings 0"
-  },
+  "main": "dist/index.js",
   "bin": {
-    "screeny": "./index.js"
+    "screeny": "dist/index.js"
   },
-  "dependencies": {
-    "chalk": "~2.4.1",
-    "meow": "~5.0.0",
-    "node-cmd": "^3.0.0",
-    "puppeteer": "~1.11.0"
+  "engines": {
+    "node": ">=8.0.0"
   },
+  "release": {
+    "branch": "master"
+  },
+  "scripts": {
+    "build": "babel src --out-dir dist --ignore __tests__",
+    "prepublish": "cross-env NODE_ENV=production npm run build",
+    "dev": "babel -w src --out-dir dist --ignore __tests__",
+    "format": "prettier --write --ignore-path .gitignore {src,.}/*.js",
+    "test": "prettier-check --ignore-path .gitignore {src,.}/*.js && ava",
+    "pretest": "npm run build",
+    "lint": "node_modules/.bin/eslint src/**/*.js --max-warnings 0"
+  },
+  "files": [
+    "dist"
+  ],
+  "homepage": "https://github.com/sebastianekstrom/screeny",
   "keywords": [
     "screenshots",
     "emulations",
-    "cli"
+    "cli",
+    "puppeteer"
   ],
-  "author": "Sebastian Ekström <seb.ekstrom@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/sebastianekstrom/screeny/issues"
+  },
+  "dependencies": {
+    "eslint": "^5.15.1",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "ink": "^2.0.3",
+    "ink-spinner": "^3.0.0",
+    "meow": "^4.0.0",
+    "node-cmd": "^3.0.0",
+    "prettier": "^1.16.4",
+    "prettier-check": "^2.0.0",
+    "puppeteer": "^1.13.0",
+    "react": "^16.8.4",
+    "update-notifier": "^2.3.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.0.0-beta.40",
+    "@babel/core": "^7.0.0-beta.40",
+    "@babel/plugin-proposal-class-properties": "^7.3.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0-beta.40",
+    "@babel/preset-env": "^7.0.0-beta.40",
+    "@babel/preset-react": "^7.0.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "cross-env": "^5.1.3"
+  },
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sebastianekstrom/screeny.git"
-  },
-  "bugs": {
-    "url": "https://github.com/sebastianekstrom/screeny/issues"
-  },
-  "homepage": "https://github.com/sebastianekstrom/screeny",
-  "devDependencies": {
-    "eslint": "~5.9.0",
-    "eslint-config-prettier": "~3.3.0",
-    "eslint-plugin-prettier": "~3.0.0",
-    "prettier": "~1.15.3"
   }
 }
